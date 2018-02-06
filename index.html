@@ -10,6 +10,29 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<script type="text/javascript" src="./js/app.js"></script>
+		
+		<script>
+			
+			function modificarValores(){
+				var streams = document.getElementById('cantidad_streams').value;
+				var valorDeezer = calcularValor(plataformas["Deezer"], streams);
+				var valorSpotify = calcularValor(plataformas["Spotify"], streams);
+				var valorGoogle = calcularValor(plataformas["Google"], streams);
+				var valorTidal = calcularValor(plataformas["Tidal"], streams);
+				var valorYoutube = calcularValor(plataformas["Youtube"], streams);
+				var valorApple = calcularValor(plataformas["Apple"], streams);
+
+				document.getElementById('valor_deezer').value = "$" +  valorDeezer;
+				document.getElementById('valor_spotify').value = "$" +  valorSpotify;
+				document.getElementById('valor_google').value = "$" +  valorGoogle;
+				document.getElementById('valor_tidal').value = "$" +  valorTidal;
+				document.getElementById('valor_youtube').value = "$" +  valorYoutube;
+				document.getElementById('valor_apple').value = "$" + valorApple;
+
+			}
+
+		</script>
 	</head>
 	<body>
 
@@ -27,34 +50,34 @@
 
 				<!-- Main -->
 					<section id="main">
-						<input type="number" style="margin-top: 10%; width: 90%; text-align: center;" placeholder="20.000">
+						<input type="number" id="cantidad_streams" style="margin-top: 10%; width: 90%; text-align: center;" placeholder="Streams" onchange="modificarValores()" lang="">
 
 						<!-- Thumbnails -->
 							<section class="logos" style="margin-top: 5%">
 								<div style="width: 80%">
 									<a style="margin-top: 10%">
 										<img src="images/streaming/google_play_circle.png" alt="" style="float: left;" />
-										<input type="number" name="" style="width: 60%; margin-left: 7em;" placeholder="$1.000.000">
+										<input id="valor_google" type="text" name="" style="width: 60%; margin-left: 7em;" placeholder="$0.0" readonly="true">
 									</a>
 									<a style="margin-top: 10%;">
 										<img src="images/streaming/tidal_circle.png" alt="" style="float: left;" />							
-										<input type="number" name="" style="width: 60%; margin-left: 7em" placeholder="$1.000.000">
+										<input id="valor_tidal" type="text" name="" style="width: 60%; margin-left: 7em" placeholder="$0.0" readonly="true">
 									</a>
 									 <a style="margin-top: 10%">
 										<img src="images/streaming/deezer_circle.png" alt="" style="float: left;" />
-										<input type="number" name="" style="width: 60%; margin-left: 7em" placeholder="$1.000.000">
+										<input id="valor_deezer" type="text" name="" style="width: 60%; margin-left: 7em" placeholder="$0.0" readonly="true">
 									</a>
-									<a style="margin-top: 10%">
+									<a style="margin-top: 10%">	
 										<img src="images/streaming/spotify_circle.png" alt="" style="float: left;" />
-										<input type="number" name="" style="width: 60%; margin-left: 7em" placeholder="$1.000.000">
+										<input id="valor_spotify" type="text" name="" style="width: 60%; margin-left: 7em" placeholder="$0.0" readonly="true">
 									</a>
 									<a style="margin-top: 10%">
 										<img src="images/streaming/youtube.png" alt="" style="float: left;" />
-										<input type="number" name="" style="width: 60%; margin-left: 7em;" placeholder="$1.000.000">
+										<input id="valor_youtube" type="text" name="" style="width: 60%; margin-left: 7em;" placeholder="$0.0" readonly="true">
 									</a>
 									<a style=" margin-top: 10%">
 										<img src="images/streaming/applemusic_circle.png" alt="" style="float: left;" />
-										<input type="number" name="" style="width: 60%; margin-left: 7em;" placeholder="$1.000.000">
+										<input id="valor_apple" type="text" name="" style="width: 60%; margin-left: 7em;" placeholder="$0.0" readonly="true">
 									</a>
 								</div>
 							</section>
