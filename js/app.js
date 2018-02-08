@@ -1,10 +1,10 @@
 var plataformas = {
-"Deezer" : {name : "Deezer", precio : 10},
-"Spotify" : {name : "Spotify", precio : 10},
-"Google" : {name : "Google", precio : 10},
-"Tidal" : {name : "Tidal", precio : 10},
-"Youtube" : {name : "Youtube", precio : 10},
-"Apple" : {name : "Apple", precio : 10},
+"Deezer" : {name : "Deezer", precio : 0.0047},
+"Spotify" : {name : "Spotify", precio : 0.004},
+"Google" : {name : "Google", precio : 0.0157},
+"Tidal" : {name : "Tidal", precio : 0.012},
+"Youtube" : {name : "Youtube", precio : 0.00175},
+"Apple" : {name : "Apple", precio : 0.005},
 };
 
 
