@@ -11,5 +11,5 @@ var plataformas = {
 
 function calcularValor(plataforma , streams){
 	var valor = plataformas[plataforma.name].precio;
-	return streams * valor;
+	return parseFloat(streams * valor).toFixed(2);
 }
