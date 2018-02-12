@@ -1410,9 +1410,10 @@
 
 	body {
 		background-color: #000;
-		background-image: url("../../img/bg.jpg");
+		background-image: url("../../img/bg3.jpg");
 		background-size: cover;
 		background-position: top center;
+		height: 100%;
 	}
 
 		body.is-loading *, body.is-loading *:before, body.is-loading *:after {
@@ -1615,6 +1616,11 @@
 		color: rgba(255, 255, 255, 0.35);
 		position: relative;
 		margin: 0 0 1.5em 0;
+	}
+	
+	.streams {
+		margin-bottom: 1.5em;
+		text-align: center;
 	}
 
 	header h2 + p {
@@ -2137,7 +2143,7 @@
 	}
 
 	table {
-		margin: 0 0 2em 0;
+		margin: 0 0 1em 0;
 		width: 100%;
 	}
 

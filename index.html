@@ -1,111 +1,85 @@
-<!DOCTYPE HTML>
-<!--
-	Visualize by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
+<!DOCTYPE html>
 <html>
-<head>
-	<title>CMusicApp</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<head>
+		<title>CMusicApp</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--style of boostrap in css, debe ir antes que todas las hojas de estilo-->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		<script type="text/javascript" src="assets/js/app.js"></script>
+		<script src="assets/js/angular.min.js"></script>
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<script>
+			angular.module("app",[])
+				.controller('controlador',['$scope', function($scope){
+				$scope.deezer = 0;
+				$scope.spotify =0;
+				$scope.google = 0;
+				$scope.tidal = 0;
+				$scope.youtube = 0;
+				$scope.apple = 0;
+				$scope.cambiarAngular = function(){
+					$scope.deezer = plataformas["Deezer"].precio*$scope.streams;
+					$scope.spotify = plataformas["Spotify"].precio*$scope.streams;
+					$scope.google = plataformas["Google"].precio*$scope.streams;
+					$scope.tidal = plataformas["Tidal"].precio*$scope.streams;
+					$scope.youtube = plataformas["Youtube"].precio*$scope.streams;
+					$scope.apple = plataformas["Apple"].precio*$scope.streams;
+				}
+			}]);
+
+		</script>
+	</head>
+		<body>
+			<header id="header">
+				<h1>
+					Introduce the quantity of <strong> Streams</strong>
+				</h1>
+			</header>
+			<div ng-app="app" class="container-fluid">
+				<div ng-controller="controlador">
+					<div class="streams">
+						<input type="number" step="0.01" min="0" id="cantidad_streams" placeholder="Streams" style="text-align: center" ng-model="streams" ng-change="cambiarAngular()">
+					</div>
+					<table class="table">
+						<tbody>
+							<tr>
+								<td><img src="img/streaming/spotify_circle.png" alt="" width="100" height="25";/></td>
+								<td><input id="valor_spotify" type="text" name="" style="width: 90%" placeholder="$0.0" value="USD$ {{spotify | number : 2}}" readonly="true"></td>
+							</tr>
+							<tr>
+								<td><img src="img/streaming/deezer_circle.png" alt="" width="100" height="25";/></td>
+								<td><input id="valor_deezer" type="text" name="" style="width: 90%" placeholder="$0.0" value="USD$ {{deezer | number : 2}}" readonly="true"></td>
+							</tr>
+							<tr>
+								<td><img src="img/streaming/youtube.png" alt="" width="100" height="25";/></td>
+								<td><input id="valor_youtube" type="text" name="" style="width: 90%" placeholder="$0.0" value="USD$ {{youtube | number : 2}}" readonly="true"></td>
+							</tr>
+							<tr>
+								<td><img src="img/streaming/google_play_circle.png" alt="" width="100" height="25";/></td>
+								<td><input id="valor_google" type="text" name="" style="width: 90%" placeholder="$0.0" value="USD$ {{google | number : 2}}" readonly="true"></td>
+							</tr>
+							<tr>
+								<td><img src="img/streaming/tidal_circle.png" alt="" width="100" height="25";/></td>
+								<td><input id="valor_tidal" type="text" name="" style="width: 90%" placeholder="$0.0" value="USD$ {{tidal | number : 2}}" readonly="true"></td>
+							</tr>							
+							<tr>
+								<td><img src="img/streaming/appleMusic_circle.png" alt="" width="100" height="25"/></td>
+								<td><input id="valor_apple" type="text" name="" style="width: 90%" placeholder="$0.0" value="USD$ {{apple | number : 2}}" readonly="true"></td>
+							</tr>
+										
+						</tbody>
+					</table>
+					
+						<ul class="icons" style="text-align: center">
+							<li><a href="#" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
+						</ul>
 	
-	<!--style of boostrap in css, debe ir antes que todas las hojas de estilo-->
-	<link rel="stylesheet" href="./css/bootstrap.min.css">
-	<script type="text/javascript" src="./js/app.js"></script>
-	<link rel="stylesheet" href="assets/css/main.css" />
-
-	<script>
-
-		function modificarValores(){
-			var streams = document.getElementById('cantidad_streams').value;
-			var valorDeezer = calcularValor(plataformas["Deezer"], streams);
-			var valorSpotify = calcularValor(plataformas["Spotify"], streams);
-			var valorGoogle = calcularValor(plataformas["Google"], streams);
-			var valorTidal = calcularValor(plataformas["Tidal"], streams);
-			var valorYoutube = calcularValor(plataformas["Youtube"], streams);
-			var valorApple = calcularValor(plataformas["Apple"], streams);
-
-			document.getElementById('valor_deezer').value = "$" +  valorDeezer;
-			document.getElementById('valor_spotify').value = "$" +  valorSpotify;
-			document.getElementById('valor_google').value = "$" +  valorGoogle;
-			document.getElementById('valor_tidal').value = "$" +  valorTidal;
-			document.getElementById('valor_youtube').value = "$" +  valorYoutube;
-			document.getElementById('valor_apple').value = "$" + valorApple;
-
-		}
-
-	</script>
-</head>
-<body>
-
-	<header id="header">
-		<h1>
-			Introduce the quantity of <strong> Streams</strong>
-		</h1>
-	</header>
-
-	<!-- Wrapper -->
-	<div class="container-fluid">
-		<div>
-			<input type="number" min="0" id="cantidad_streams" style="text-align: center" placeholder="Streams" onchange="modificarValores()">
-		</div>
-		<br>
-		<!-- Header -->
-		<table class="table">
-			<tbody>
-				<tr>
-					<td><img src="img/streaming/google_play_circle.png" alt="" width="100" height="25";/></td>
-					<td><input id="valor_google" type="text" name="" style="width: 90%" placeholder="$0.0" readonly="true"></td>
-				</tr>
-				<tr>
-					<td><img src="img/streaming/tidal_circle.png" alt="" width="100" height="25";/></td>
-					<td><input id="valor_tidal" type="text" name="" style="width: 90%" placeholder="$0.0" readonly="true"></td>
-				</tr>
-				<tr>
-					<td><img src="img/streaming/deezer_circle.png" alt="" width="100" height="25";/></td>
-					<td><input id="valor_deezer" type="text" name="" style="width: 90%" placeholder="$0.0" readonly="true"></td>
-				</tr>
-				<tr>
-					<td><img src="img/streaming/spotify_circle.png" alt="" width="100" height="25";/></td>
-					<td><input id="valor_spotify" type="text" name="" style="width: 90%" placeholder="$0.0" readonly="true"></td>
-				</tr>
-				<tr>
-					<td><img src="img/streaming/appleMusic_circle.png" alt="" width="100" height="25"/></td>
-					<td><input id="valor_apple" type="text" name="" style="width: 90%" placeholder="$0.0" readonly="true"></td>
-				</tr>
-				<tr>
-					<td><img src="img/streaming/youtube.png" alt="" width="100" height="25";/></td>
-					<td><input id="valor_youtube" type="text" name="" style="width: 90%" placeholder="$0.0" readonly="true"></td>
-				</tr>
-				
-				
-			</tbody>
-		</table>			
-
-
-		<header id="header">
-			<ul class="icons">
-				<li><a href="#" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
-				<li><a href="#" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
-				<li><a href="#" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
-				<li><a href="#" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
-			</ul>
-		</header>
-
-		<!-- Footer -->
-		<footer id="footer">
-			<p>&copy;All rights reserved. Developers and Designers: Sneider Velandia & Sebastián Ardila.
-			</p>
-		</footer>
-
-	</div>
-
-	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.poptrox.min.js"></script>
-	<script src="assets/js/skel.min.js"></script>
-	<script src="assets/js/main.js"></script>
-	<!-- dependencias .js de boostrap-->
-</body>
+				</div>
+			</div>
+			<br>
+		</body>
 </html>
